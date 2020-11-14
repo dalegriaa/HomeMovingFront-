@@ -1,0 +1,50 @@
+<h1 class="slogan" >
+    <strong> Home Moving Company</strong>
+  </h1>
+
+  <div class="login">
+      <div >
+        <img class="image-moving" src="assets/imagenes/camion.png">
+      </div>
+    <div class="loginborder">
+      <form [formGroup]="loginForm" class="login-container" (ngSubmit)="submit()">
+        <p [ngClass]="{ 'has-error': isSubmitted && formControls.documentNumber.errors }">
+          <input type="number" maxlength="15" placeholder="Document Number"
+           required formControlName="documentNumber" />
+        </p>
+  
+        <div *ngIf="isSubmitted && formControls.documentNumber.errors" class="help-block">
+          <div
+            *ngIf="formControls.documentNumber.errors.required"
+            class="colorTextRequired"
+          >
+            document is required!!
+          </div>
+        </div>
+    
+        <p [ngClass]="{ 'has-error': isSubmitted && formControls.filetxt.errors }">
+            <input style="display: none" required type="file" (change)="onFileSelect($event)" #hiddenfileinput>
+            <button title="add your file" type='button' (click)="hiddenfileinput.click()"  class="btn btn-info" >
+             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+             </svg>
+             Select file</button>
+        </p>
+        <div *ngIf="isSubmitted && formControls.filetxt.errors" class="help-block">
+            <div
+              *ngIf="formControls.filetxt.errors.required"
+              class="colorTextRequired"
+            >
+              file is required!!
+            </div>
+          </div>
+         <p>
+            <input type="submit"  value="submit" />
+          </p>
+      </form>
+      <div>
+      </div>
+    </div>
+  </div>
+  
+
